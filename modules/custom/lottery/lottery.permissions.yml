@@ -1,0 +1,59 @@
+add prize entities:
+  title: 'Create new Prize entities'
+
+administer prize entities:
+  title: 'Administer Prize entities'
+  description: 'Allow to access the administration form to configure Prize entities.'
+  restrict access: true
+
+delete prize entities:
+  title: 'Delete Prize entities'
+
+edit prize entities:
+  title: 'Edit Prize entities'
+
+view published prize entities:
+  title: 'View published Prize entities'
+
+view unpublished prize entities:
+  title: 'View unpublished Prize entities'
+add users email entities:
+  title: 'Create new Users email entities'
+
+administer users email entities:
+  title: 'Administer Users email entities'
+  description: 'Allow to access the administration form to configure Users email entities.'
+  restrict access: true
+
+delete users email entities:
+  title: 'Delete Users email entities'
+
+edit users email entities:
+  title: 'Edit Users email entities'
+
+view published users email entities:
+  title: 'View published Users email entities'
+
+view unpublished users email entities:
+  title: 'View unpublished Users email entities'
+add prize keys entities:
+  title: 'Create new Prize keys entities'
+add prize keys entities:
+  title: 'Create new Prize keys entities'
+
+administer prize keys entities:
+  title: 'Administer Prize keys entities'
+  description: 'Allow to access the administration form to configure Prize keys entities.'
+  restrict access: true
+
+delete prize keys entities:
+  title: 'Delete Prize keys entities'
+
+edit prize keys entities:
+  title: 'Edit Prize keys entities'
+
+view published prize keys entities:
+  title: 'View published Prize keys entities'
+
+view unpublished prize keys entities:
+  title: 'View unpublished Prize keys entities'

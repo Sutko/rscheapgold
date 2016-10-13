@@ -1,0 +1,63 @@
+{#<div class="block-title">
+    {% trans %}
+    Buy & Sell RuneScape Gold
+    {% endtrans %}
+</div>
+<div class="block-subtitle">
+    {% trans %}
+    Skip grinding, go straight to fun after you purchase your gold.
+    {% endtrans %}
+</div>#}
+<div class="block-content">
+    {% for key,item in products %}
+    <div id="productItem-{{ item.nid }}" class="item col-sm-6 product">
+        <form id="Product{{ key }}" novalidate="novalidate" method="post" action="{{ url('develop.api_controller_payment') }}">
+            <div class="field-image">
+                <img src="{{ item.image }}" alt="{{ item.image_alt }}">
+            </div>
+            <div class="field-title">
+                {{ item.title }}
+            </div>
+            <div class="field-amount">
+                <span class="field-label">{% trans %} Current Stock: {% endtrans %}</span>
+                <span class="field-value">{% trans %} {{ item.amount }}M {% endtrans %}</span>
+            </div>
+            <div class="field-price">
+                <span class="field-value">
+                    {{ item.price }}
+                </span>
+                <span class="selected-currency">{{ sign }}</span>
+                <span class="label-desc">{% trans %}per 1 million{% endtrans %}</span>
+            </div>
+            <div class="field-counter">
+                <input type="number" name="amount" onclick="ga('send', 'pageview', '/click-RUNESCAPE-2007-buy-now');" onkeypress='return (event.charCode >= 48 && event.charCode <= 57)  || (event.charCode == 0)' min="{{ item.min_amount }}" class="changeAmountSA" id="ChangePrice-{{ item.nid }}" placeholder="Millions">
+                <span class="m">M</span> 
+                <input type="hidden" class="hidden_price" id="HiddenPrice-{{ item.nid }}" value="{{ item.price }}">
+                <span class="selected-currency">{{ sign }}</span>
+                <span class="selected-currency">{{ sign }}</span>
+                <input class="changePriceSA" onclick="ga('send', 'pageview', '/click-RUNESCAPE-3-buy-now');" onkeypress='return (event.charCode >= 48 && event.charCode <= 57) || (event.charCode == 46) || (event.charCode == 0)' type="number" min="{{ item.min_amount }}" name="total"  id="priceResponse-{{ item.nid }}"  placeholder="0">
+                <input class="character" type="text" required maxlength="12" name="character"  id="character-{{ item.nid }}"  placeholder="Character name">
+                <span class="c">{{ sign }}{{ currency }}</span>
+            </div>
+            <div class="eligable-result">
+
+            </div>
+            <div class="field-buy">
+                <button  type="submit" class="btn btn-primary">{% trans %}BUY NOW{% endtrans %}</button>
+            </div>
+            <div class="field-quick-buy">
+                <span class="field-label">{% trans %} Quick Buy {% endtrans %}</span>
+                <ul>
+                    {% for price in prices %}
+                    <li>
+                        <a data-val="{{ price.name.value }}" href="#">{{ price.name.value }}<span class="milions">M</span></a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <input type="hidden" id="HiddenCurrency" name="currency" value="{{ currency }}">
+                <input type="hidden" name="id" value="{{ item.nid }}">
+            </div>
+        </form>
+    </div>
+    {% endfor %}
+</div>

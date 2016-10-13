@@ -1,0 +1,18 @@
+
+# In order to to create pages it is necessary to define routes for them.
+# A route maps a URL path to a controller. It defines what function
+# or method will be called when a URL is accessed.
+# If the user accesses http://drupal8.dev//lottery/api/index, the routing
+# system will look for a route with that path. In this case it will find a
+# match, and execute the _controller callback. In this case the callback is
+# defined as a classname
+# ("\Drupal\lottery\Controller\LotteryController")
+# and a method ("index").
+lottery.lottery_controller_index:
+  path: '/lottery/api/check'
+  defaults:
+    _controller: '\Drupal\lottery\Controller\LotteryController::index'
+    _title: 'index'
+  requirements:
+    _permission: 'access content'
+    _method: 'POST'

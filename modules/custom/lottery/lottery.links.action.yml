@@ -1,0 +1,15 @@
+entity.prize.add_form:
+  route_name: entity.prize.add_form
+  title: 'Add Prize'
+  appears_on:
+    - entity.prize.collection
+entity.users_email.add_form:
+  route_name: entity.users_email.add_form
+  title: 'Add Users email'
+  appears_on:
+    - entity.users_email.collection
+entity.prize_keys.add_form:
+  route_name: entity.prize_keys.add_form
+  title: 'Add Prize keys'
+  appears_on:
+    - entity.prize_keys.collection

@@ -1,0 +1,69 @@
+<div class="notFoundPage__title notFoundPageHeader paymentSuccessHeader">
+    <p class="notFoundPageHeader_text">{% trans %} Your payment was successful {% endtrans %}</p>
+</div>
+
+<div class="paymentErrorPage paymentSuccessPage">
+    <div class="corner-top"></div>
+    <img class="paymentErrorPage__icon" src="/sites/default/files/payment-success-icon.png" alt="success icon">
+    <h1  class="paymentErrorPage__bigText paymentSuccessBigText">{% trans %}Thank you for your purchase{% endtrans %}</h1>
+    <div class="paymentSuccessPage_info paymentSuccessInfo">
+        <div class="paymentSuccessInfo__block">
+            <div class="paymentSuccessInfo__label">
+                {% trans %}Your order ID:{% endtrans %}
+            </div>
+            <div class="paymentSuccessInfo__val">
+                {{ data.order_id }}
+            </div>
+        </div>
+        <div class="paymentSuccessInfo__block">
+            <div class="paymentSuccessInfo__label">
+                {% trans %}Your transaction ID:{% endtrans %}
+            </div>
+            <div class="paymentSuccessInfo__val">
+                {{ data.transaction_id }}
+            </div>
+        </div>
+        <div class="paymentSuccessInfo__block">
+            <div class="paymentSuccessInfo__label">
+                {% trans %} Amount: {% endtrans %}
+            </div>
+            <div class="paymentSuccessInfo__val">
+                {{ data.transaction.amount }}  {{ data.transaction.currency }} {{data.qty}} {{ data.name_product }}
+            </div>
+        </div>
+        <div class="paymentSuccessInfo__block">
+            <div class="paymentSuccessInfo__label">
+                {% trans %} Character name: {% endtrans %}
+            </div>
+            <div class="paymentSuccessInfo__val">
+                 {{ data.character }}
+            </div>
+        </div>
+        {% if data.transaction.customer.firstName or data.transaction.customer.lastName %}
+        <div class="paymentSuccessInfo__block">
+            <div class="paymentSuccessInfo__label">
+                {% trans %} Delivery name: {% endtrans %}
+            </div>
+            <div class="paymentSuccessInfo__val">
+                {{ data.transaction.customer.firstName~' '~data.transaction.customer.lastName }}
+            </div>
+        </div>
+        {% endif %}
+        {% if data.package_win %}
+        <div class="paymentSuccessInfo__block">
+            <div class="paymentSuccessInfo__label">
+                {% trans %} Lottery ticket: {% endtrans %}
+            </div>
+            <div class="paymentSuccessInfo__val">
+                <div>
+                    {{ data.code }} [{{ data.package_win }}]
+                </div>
+            </div>
+            <br>
+            <b style='display: inline-block; width: 100%; font-size: 10px; margin-right: -4px; color: #93938a; text-align: center;'>[Lottery code is valid for 24 hours]</b>
+        </div>
+        {% endif %}
+    </div>
+    <div class="corner-bottom"></div>
+    <a class="paymentSuccessPage__link" href="/">{% trans %} Go to Home Page {% endtrans %}</a>
+</div>

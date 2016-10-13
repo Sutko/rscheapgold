@@ -1,0 +1,19 @@
+feedback_js:
+  version: 1.x
+  js:
+    js/jquery.validate.min.js: {}
+    js/feedback.js: {}
+currency_js:
+  version: 1.x
+  js:
+    js/currency.js: {}
+selling_js:
+  version: 1.x
+  js:
+    js/jquery.validate.min.js: {}
+    js/selling.js: {}
+product_js:
+  version: 1.x
+  js:
+    js/jquery.validate.min.js: {}
+    js/product.js: {}

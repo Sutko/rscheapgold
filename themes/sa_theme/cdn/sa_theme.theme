@@ -1,0 +1,43 @@
+<?php
+/**
+ * @file
+ * Bootstrap sub-theme.
+ *
+ * Place your custom PHP code in this file.
+ */
+use \Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Drupal\Core\Url;
+
+ function sa_theme_preprocess_html(&$variables) {
+   $path = \Drupal::service('path.current')->getPath();
+
+   $path_args = explode('/', $path);
+   if (isset($path_args[1]) && isset($path_args[2]) && ($path_args[1] == 'node') && (is_numeric($path_args[2]))) {
+     $variables['attributes']['class'][] = 'page-node-' . $path_args[2];
+   }
+ }
+
+ function sa_theme_preprocess_pager(&$variables) {
+    $path = \Drupal::service('path.current')->getPath();
+
+    $path_args = explode('/', $path);
+   if (isset($path_args[1]) && isset($path_args[2])) {
+     $variables['active_page'] = $path_args[2];
+   }
+ }
+
+ function sa_theme_preprocess_menu(&$variables, $hook) {
+     // Get the current path.
+     $current_path = Url::fromRoute('<current>')->toString();
+     $items = $variables['items'];
+
+     foreach ($items as $key => $item) {
+       // If path is current_path, set active to li.
+
+       if ($item['url']->toString() == $current_path || ($item['url']->toString() == '/' && $current_path == '/node')) {
+         // Add active link.
+         $variables['items'][$key]['active'] = true;
+       }
+     }
+ }

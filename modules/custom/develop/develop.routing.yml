@@ -1,0 +1,73 @@
+
+# In order to to create pages it is necessary to define routes for them.
+# A route maps a URL path to a controller. It defines what function
+# or method will be called when a URL is accessed.
+# If the user accesses http://drupal8.dev//api/coverted_money, the routing
+# system will look for a route with that path. In this case it will find a
+# match, and execute the _controller callback. In this case the callback is
+# defined as a classname
+# ("\Drupal\develop\Controller\ApiController")
+# and a method ("converted_money").
+develop.api_controller_converted_money:
+  path: '/api/coverted_money'
+  defaults:
+    _controller: '\Drupal\develop\Controller\ApiController::converted_money'
+    _title: 'converted_money'
+  requirements:
+    _permission: 'access content'
+
+develop.api_controller_save_currency:
+  path: '/api/save_currency'
+  defaults:
+    _controller: '\Drupal\develop\Controller\ApiController::save_currency'
+    _title: 'save_currency'
+  requirements:
+    _permission: 'access content'
+
+develop.api_controller_get_puckage_prices:
+  path: '/api/get_puckage_prices'
+  defaults:
+    _controller: '\Drupal\develop\Controller\ApiController::get_puckage_prices'
+    _title: 'get_puckage_prices'
+  requirements:
+    _permission: 'access content'
+
+develop.api_controller_get_eligible_to_win:
+  path: '/api/get_eligible_to_win'
+  defaults:
+    _controller: '\Drupal\develop\Controller\ApiController::get_eligible_to_win'
+    _title: 'get_eligible_to_win'
+  requirements:
+    _permission: 'access content'
+
+develop.api_controller_payment:
+  path: '/api/payment'
+  defaults:
+    _controller: '\Drupal\develop\Controller\ApiController::payment'
+    _title: 'payment'
+  requirements:
+    _permission: 'access content'
+
+develop.api_controller_payment_success:
+  path: '/payment/success'
+  defaults:
+    _controller: '\Drupal\develop\Controller\ApiController::payment_success'
+    _title: 'Success'
+  requirements:
+    _permission: 'access content'
+
+develop.api_controller_payment_error:
+  path: '/payment/error'
+  defaults:
+    _controller: '\Drupal\develop\Controller\ApiController::payment_error'
+    _title: 'Error'
+  requirements:
+    _permission: 'access content'
+
+develop.api_controller_page_not_found:
+  path: '/page-not-found'
+  defaults:
+    _controller: '\Drupal\develop\Controller\ApiController::page_not_found'
+    _title: 'OPS'
+  requirements:
+    _permission: 'access content'

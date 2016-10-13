@@ -1,0 +1,22 @@
+ 
+<div class="articles-items">
+    {% for key,item in articles %}
+     {#<div class="animated-block">#}
+     {#<div class="wow fadeInUp">#}
+    <div class="scroll-animated-block visible-item">
+        <div class="article item item-{{ key }}">
+            <div class="field-image">
+                <div class="image hexagon"></div>
+            </div>
+            <div class="field-text">
+                {{ item.body |raw }}
+            </div>
+            {#<style type="text/css">
+                #block-blog-block .item-{{ key }} .field-image .hexagon.image:before {
+                    background: url('{{ item.image }}');
+                }
+            </style>#}
+        </div>
+    </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,99 @@
+<?php
+
+/**
+ * @file
+ * Contains develop.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function develop_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the develop module.
+    case 'help.page.develop':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My Awesome Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Theme hook
+ */
+function develop_theme($existing, $type, $theme, $path) {
+  return [
+      'currency_block' =>
+      [
+          'variables' => [
+              'selected' => null,
+              'currency' => null
+          ],
+          'template' => 'currency_block'
+      ],
+      'product_block' =>
+          [
+              'variables' => [
+                  'products' => null,
+                  'sign'     => null,
+                  'currency' => null,
+                  'prices'   => null
+              ],
+              'template' => 'product_block'
+          ],
+      'sell_block' =>
+          [
+              'variables' => [
+                  'product1' => null,
+                  'product2' => null,
+                  'sign'     => '$'
+              ],
+              'template' => 'sell_block'
+          ],
+      'buy_now_block' =>
+          [
+              'variables' => [
+              ],
+              'template' => 'buy_now_block'
+          ],
+      'blog_block' =>
+          [
+              'variables' => [
+                  'articles' => null
+              ],
+              'template' => 'blog_block'
+          ],
+      'payment_success' =>
+        [
+            'variables' => [
+                'data' => null
+            ],
+            'template' => 'payment_success'
+        ],
+      'payment_error' =>
+        [
+            'variables' => [
+                'data' => null
+            ],
+            'template' => 'payment_error'
+        ],
+      'page_not_found' =>
+          [
+              'variables' => [
+              ],
+              'template' => 'page_not_found'
+          ]
+  ];
+}
+
+
+
+function develop_form_feedback_form_alter(&$form, &$form_state, $form_id) {
+    
+
+}

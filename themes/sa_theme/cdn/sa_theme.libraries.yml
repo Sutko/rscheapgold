@@ -1,0 +1,14 @@
+global-styling:
+  css:
+    theme:
+      css/style.css: {}
+      css/animate.min.css: {}
+  js:
+    js/ScrollMagic.min.js : {}
+    js/TweenMax.min.js : {}
+    js/animation.gsap.min.js : {}
+    js/debug.addIndicators.min.js : {}
+    js/function.js: {}
+    js/google-analytics.js: {}
+    js/wow.min.js: {}
+    js/jquery.jcarousel-core.min.js: {}

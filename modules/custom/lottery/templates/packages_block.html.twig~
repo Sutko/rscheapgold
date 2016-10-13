@@ -1,0 +1,24 @@
+<div id="packages-list">
+    {% for pack in packages %}
+        <div class="package package-{{ pack.id }} col-sm-4">
+            <div class="field-name">
+                {{ pack.name }}
+            </div>
+            <div class="field-description">
+                {{ pack.description | raw }}
+            </div>
+            <div class="field-prizes">
+                {% for item in pack.prizes %}
+                    <div class="prize item">
+                        <img class="img-responsive" src="{{ item.image }}" alt="prize">
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="field-price">
+                <span>{% trans %} Price:  {% endtrans %}</span>
+                <span id="currency">{{ sign }}</span>
+                <span class="val">{{ pack.price }}</span>
+            </div>
+        </div>
+    {% endfor %}
+</div>

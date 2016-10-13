@@ -1,0 +1,4 @@
+package_opener_js:
+  version: 1.x
+  js:
+    js/package_opener.js: {}

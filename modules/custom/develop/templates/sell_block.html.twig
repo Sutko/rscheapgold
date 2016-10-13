@@ -1,0 +1,50 @@
+ <div class="part-1 col-sm-6">
+     <form id="SellForm1" class="sell-block-form">
+        <div class="part-title">
+            {% trans %}
+            Sell
+            {% endtrans %}
+            <span id="productTitle1">{{ product1.title }}</span>
+        </div>
+        <div class="part-subtitle">
+            {% trans %}
+            The best price on the market!
+            {% endtrans %}
+        </div>
+        <div class="input-zone">
+            <div class="form-group">
+                <input type="number" min="{{ product1.min_amount }}" id="sellChange1" name="ammount_runescape_2007" placeholder="Enter amount in Millions" class="form-control">
+                <input type="hidden" id="sellPrice1" name="sell_price_1" value="{{ product1.price }}">
+            </div>
+            <div class="prise_result">
+                {% trans %} You will get {% endtrans %} <span id="currencyReplace">{{ sign }}{{currency}}</span> <span id="sellReplace1">0.00</span>
+            </div>
+        </div>
+        <input type="submit" class="sell1" id="sellButton" value="Sell Gold" class="btn btn-success">
+     </form>
+</div>
+<div class="part-2 col-sm-6">
+    <form id="SellForm2" class="sell-block-form">
+        <div class="part-title">
+            {% trans %}
+            Sell
+            {% endtrans %}
+            <span id="productTitle2">{{ product2.title }}</span>
+        </div>
+        <div class="part-subtitle">
+            {% trans %}
+            The best price on the market!
+            {% endtrans %}
+        </div>
+        <div class="input-zone">
+            <div class="form-group">
+                <input type="number" min="{{ product2.min_amount }}" id="sellChange2" name="ammount_runescape_3" placeholder="Enter amount in Millions" class="form-control">
+                <input type="hidden" id="sellPrice2" name="sell_price_2" value="{{ product2.price }}">
+            </div>
+            <div class="prise_result">
+                {% trans %} You will get  <span id="currencyReplace">{{ sign }}{{currency}}</span> {% endtrans %} <span id="sellReplace2">0.00</span>
+            </div>
+        </div>
+        <input type="submit" class="sell2" id="sellButton" value="Sell Gold" class="btn btn-success">
+    </form>
+</div>

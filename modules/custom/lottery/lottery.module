@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * @file
+ * Contains lottery.module..
+ */
+
+use Drupal\Component\Utility\SafeMarkup;
+use \Drupal\Component\Utility\Html;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function lottery_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the lottery module.
+    case 'help.page.lottery':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My Awesome Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+function lottery_mail($key, &$message, $params) {
+  $options = array(
+      'langcode' => $message['langcode'],
+  );
+  switch ($key) {
+    case 'send_code':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = t('Your Key to reveal prize', [], $options);
+      $message['body'][] = Html::decodeEntities($params['message']);
+      break;
+      
+      case 'send_success_pay':
+        $message['from'] = \Drupal::config('system.site')->get('mail');
+        $message['subject'] = t('Your recent Purchase at RsCheapGold', [], $options);
+        $message['body'][] = Html::escape($params['message']);
+        break;
+  }
+}
+
+function lottery_mail_alter(&$message) {
+  $headers = array(
+    'MIME-Version'              => '1.0',
+    'Content-Type'              => 'text/html; charset=iso-8859-1; format=flowed',
+    'Content-Transfer-Encoding' => '8Bit',
+    'X-Mailer'                  => 'Drupal',
+  );
+  foreach ($headers as $key => $value) {
+    $message['headers'][$key] = $value;
+  }
+}
+
+
+function lottery_theme($existing, $type, $theme, $path) {
+  return [
+      'packages_block' =>
+          [
+              'variables' => [
+                  'packages' => null,
+                  'sign'     => null
+              ],
+              'template' => 'packages_block'
+          ],
+      'packages_opener_block' =>
+          [
+              'variables' => [
+                  'test' => null,
+              ],
+              'template' => 'packages_opener_block'
+          ],
+  ];
+}

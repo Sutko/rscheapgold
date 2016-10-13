@@ -1,0 +1,63 @@
+# Prize routing definition
+prize.settings_tab:
+  route_name: prize.settings
+  title: 'Settings'
+  base_route: prize.settings
+entity.prize.canonical:
+  route_name: entity.prize.canonical
+  base_route: entity.prize.canonical
+  title: 'View'
+
+entity.prize.edit_form:
+  route_name: entity.prize.edit_form
+  base_route: entity.prize.canonical
+  title: Edit
+
+entity.prize.delete_form:
+  route_name:  entity.prize.delete_form
+  base_route:  entity.prize.canonical
+  title: Delete
+  weight: 10
+
+# Users email routing definition
+users_email.settings_tab:
+  route_name: users_email.settings
+  title: 'Settings'
+  base_route: users_email.settings
+entity.users_email.canonical:
+  route_name: entity.users_email.canonical
+  base_route: entity.users_email.canonical
+  title: 'View'
+
+entity.users_email.edit_form:
+  route_name: entity.users_email.edit_form
+  base_route: entity.users_email.canonical
+  title: Edit
+
+entity.users_email.delete_form:
+  route_name:  entity.users_email.delete_form
+  base_route:  entity.users_email.canonical
+  title: Delete
+  weight: 10
+
+# Prize keys routing definition
+prize_keys.settings_tab:
+  route_name: prize_keys.settings
+  title: 'Settings'
+  base_route: prize_keys.settings
+entity.prize_keys.canonical:
+  route_name: entity.prize_keys.canonical
+  base_route: entity.prize_keys.canonical
+  title: 'View'
+
+entity.prize_keys.edit_form:
+  route_name: entity.prize_keys.edit_form
+  base_route: entity.prize_keys.canonical
+  title: Edit
+
+entity.prize_keys.delete_form:
+  route_name:  entity.prize_keys.delete_form
+  base_route:  entity.prize_keys.canonical
+  title: Delete
+  weight: 10
+
