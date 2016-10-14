@@ -1,0 +1,8 @@
+
+orderlist.default_controller_order_data:
+  path: '/order/order_data/data'
+  defaults:
+    _controller: '\Drupal\orderlist\Controller\DefaultController::order_data'
+    _title: 'get_order_data'
+  requirements:
+    _permission: 'access content'

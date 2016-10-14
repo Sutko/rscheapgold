@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains orderlist.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function orderlist_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the orderlist module.
+    case 'help.page.orderlist':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module for show order list') . '</p>';
+      return $output;
+
+    default:
+  }
+}

@@ -55,7 +55,7 @@ class UsersEmailHtmlRouteProvider extends AdminHtmlRouteProvider {
           '_entity_list' => $entity_type_id,
           '_title' => "{$entity_type->getLabel()} list",
         ])
-        ->setRequirement('_permission', $entity_type->getAdminPermission())
+        ->setRequirement('_permission', 'view users email entities')
         ->setOption('_admin_route', TRUE);
 
       return $route;

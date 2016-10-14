@@ -5,8 +5,8 @@ var default_image = '/themes/sa_theme/cdn/img/gift.png';
 $('body').on('click','#OpenButton',function(){
        var code = $(this).prev().val();
        var code_obj = $(this).prev();
-       if(code.length != 20){
-           replace_messge('The code is invalid','error');
+       if(code.length != 5){
+           replace_messge('The code must be 20 characters.','error');
            return false;
        }
 

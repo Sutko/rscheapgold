@@ -200,6 +200,135 @@ class PrizeKeys extends ContentEntityBase implements PrizeKeysInterface {
       ))
       ->setDefaultValue('');
 
+      $fields['key'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Key'))
+      ->setDescription(t('The Key.'))
+      ->setSettings(array(
+        'max_length' => 50,
+        'text_processing' => 0,
+      ))
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', array(
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ))
+      ->setDisplayOptions('form', array(
+        'type' => 'string_textfield',
+        'weight' => -4,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+
+      $fields['nickname'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Nickname'))
+      ->setDescription(t('The name of the Prize keys entity.'))
+      ->setSettings(array(
+        'max_length' => 50,
+        'text_processing' => 0,
+      ))
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', array(
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ))
+      ->setDisplayOptions('form', array(
+        'type' => 'string_textfield',
+        'weight' => -4,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+      $fields['email'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Email'))
+      ->setDescription(t('The Email.'))
+      ->setSettings(array(
+        'max_length' => 50,
+        'text_processing' => 0,
+      ))
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', array(
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ))
+      ->setDisplayOptions('form', array(
+        'type' => 'string_textfield',
+        'weight' => -4,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+      $fields['ip_address'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('IP Address'))
+      ->setDescription(t('The ip address.'))
+      ->setSettings(array(
+        'max_length' => 50,
+        'text_processing' => 0,
+      ))
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', array(
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ))
+      ->setDisplayOptions('form', array(
+        'type' => 'string_textfield',
+        'weight' => -4,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+      $fields['transaction_id'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Transaction ID'))
+      ->setDescription(t('The transaction ID of the Order List entity.'))
+      ->setSettings(array(
+        'max_length' => 50,
+        'text_processing' => 0,
+      ))
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', array(
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ))
+      ->setDisplayOptions('form', array(
+        'type' => 'string_textfield',
+        'weight' => -4,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+      $fields['delivered'] = BaseFieldDefinition::create('list_string')
+      ->setLabel(t('Delivered?'))
+      ->setDescription(t('The delivered status of the Order List entity.'))
+      ->setSettings(array(
+        'max_length' => 50,
+        'text_processing' => 0,
+      ))
+
+      ->setSettings(array(
+        'allowed_values' => array(
+          'Yes' => 'Yes',
+          'No' => 'No',
+        ),
+      ))
+
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', array(
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ))
+      ->setDisplayOptions('form', array(
+        'type' => 'string_textfield',
+        'weight' => -4,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
     $fields['code'] = BaseFieldDefinition::create('string')
         ->setLabel(t('Code'))
         ->setSettings(array(

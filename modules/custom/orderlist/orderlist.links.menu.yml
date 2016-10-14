@@ -1,0 +1,13 @@
+# Order List menu items definition
+entity.default_entity.collection:
+  title: 'Order List'
+  route_name: entity.default_entity.collection
+  description: 'List Order List entities'
+  parent: system.admin_structure
+  weight: 100
+
+default_entity.admin.structure.settings:
+  title: Order List settings
+  description: 'Configure Order List entities'
+  route_name: default_entity.settings
+  parent: system.admin_structure

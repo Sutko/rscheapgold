@@ -32,34 +32,9 @@ class LotteryController extends ControllerBase {
     if(!count($id)){
       $data = [
         'error' => true,
-        'message' => $this->t('The code is invalid')
+        'message' => $this->t('Invalid Key')
       ];
     } else {
-
-      $storage_t = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
-          $ids_t = $storage_t->getQuery()
-              ->condition('vid', 'transactions')
-              ->condition('field_cod', $code)
-              ->range(0, 1)
-              ->execute();
-
-          $package = $storage_t->loadMultiple($ids_t);
-
-          $test = array_values($package)[0];
-
-          $date = date_create($test->field_end_date->value);
-          $date_t = date('Y-m-d H:i:s');
-          $date_end = date_format($date,"Y-m-d H:i:s");
-          
-          if($date_t > $date_end){
-            
-            $data = [
-              'error' => true,
-              'message' => $this->t('Sorry, but this Lottery Code has expired')
-            ];
-
-          }else{
-      
       $prize_key = $storage->load(array_values($id)[0]);
       $package_id = $prize_key->package_id->entity->id();
       $storage = \Drupal::entityTypeManager()->getStorage('prize');
@@ -80,8 +55,7 @@ class LotteryController extends ControllerBase {
         'error' => false,
         'message' => $this->t('You have won '.$win['name'].' equal to '.$win['amount']),
         'image'   => $win['image']
-      ];  
-          }
+      ];
     }
     return $this->send_response($data,200);
   }

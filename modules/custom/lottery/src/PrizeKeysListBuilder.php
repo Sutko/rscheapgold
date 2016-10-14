@@ -32,15 +32,14 @@ class PrizeKeysListBuilder extends EntityListBuilder {
   public function buildHeader() {
     $header['id'] = $this->t('Prize keys ID');
     $header['key'] = $this->t('Key');
-    $header['status'] = $this->t('Status');
     $header['package'] = $this->t('Package');
     $header['nickname'] = $this->t('Nickname');
-    $header['name'] = $this->t('Name');
+    $header['user'] = $this->t('Name');
     $header['email'] = $this->t('Email');
     $header['prize'] = $this->t('Prize');
-    $header['ip_address'] = $this->t('IP-address');
-    $header['transaction_id'] = $this->t('Transaction ID');
-    $header['delivered'] = $this->t('Delivered (yes/no)');
+    $header['ip_address'] = $this->t('Prize');
+    $header['transaction_id'] = $this->t('Prize');
+    $header['delivered'] = $this->t('Delivered?');
     return $header + parent::buildHeader();
   }
 
@@ -49,19 +48,17 @@ class PrizeKeysListBuilder extends EntityListBuilder {
    */
   public function buildRow(EntityInterface $entity) {
     /* @var $entity \Drupal\lottery\Entity\PrizeKeys */
-   //dump($entity);
     $row['id'] = $entity->id();
-    $row['key'] = "E";
-    $row['status'] = $entity->status->value ? 'Used' : 'Active';
+    $row['key'] = $entity->key->value;
     $row['package'] = $entity->get('package_id')->entity ? $entity->get('package_id')->entity->name->value : ' ';
-    $row['nickname'] = "E";
-    $row['name'] = $entity->get('email_id')->entity ? $entity->get('email_id')->entity->name->value : ' ';
-    $row['email'] = "E";
+    $row['nickname'] = $entity->nickname->value;
+    $row['user'] = $entity->get('email_id')->entity ? $entity->get('email_id')->entity->name->value : ' ';
+    $row['email'] = $entity->email->value;
     $row['prize'] = $entity->get('prize_id')->entity ? $entity->get('prize_id')->entity->name->value.' ('.$entity->get('prize_id')->entity->gold_value->value.'M)' : '';
-    $row['ip_address'] = "E";
-    $row['transaction_id'] = "E";
-    $row['delivered'] = "E";
+    $row['ip_address'] = $entity->ip_address->value;
+    $row['transaction_id'] = $entity->transaction_id->value;
     $row['operations']['data'] = $this->buildOperations($entity);
+     $row['delivered'] = $entity->transaction_id->value;
 
     return $row;
     /* active/used */

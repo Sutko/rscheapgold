@@ -23,7 +23,6 @@ class PackageOpenerBlock extends BlockBase {
     $build['package_opener_block'] = [
         '#cache' => ['max-age' => 0],
     ];
-
     $build[] = [
         '#theme'    => 'packages_opener_block',
     ];

@@ -1,0 +1,22 @@
+add order list entities:
+  title: 'Create new Order List entities'
+
+administer order list entities:
+  title: 'Administer Order List entities'
+  description: 'Allow to access the administration form to configure Order List entities.'
+  restrict access: true
+
+delete order list entities:
+  title: 'Delete Order List entities'
+
+edit order list entities:
+  title: 'Edit Order List entities'
+
+access order list overview:
+  title: 'Access the Order List overview page'
+
+view published order list entities:
+  title: 'View published Order List entities'
+
+view unpublished order list entities:
+  title: 'View unpublished Order List entities'

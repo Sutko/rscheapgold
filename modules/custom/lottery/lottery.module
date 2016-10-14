@@ -6,7 +6,6 @@
  */
 
 use Drupal\Component\Utility\SafeMarkup;
-use \Drupal\Component\Utility\Html;
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
@@ -29,33 +28,15 @@ function lottery_mail($key, &$message, $params) {
   $options = array(
       'langcode' => $message['langcode'],
   );
+
   switch ($key) {
     case 'send_code':
       $message['from'] = \Drupal::config('system.site')->get('mail');
-      $message['subject'] = t('Your Key to reveal prize', [], $options);
-      $message['body'][] = Html::decodeEntities($params['message']);
+      $message['subject'] = t('Your recent Purchase at RsCheapGold', [], $options);
+      $message['body'][] = SafeMarkup::checkPlain($params['message']);
       break;
-      
-      case 'send_success_pay':
-        $message['from'] = \Drupal::config('system.site')->get('mail');
-        $message['subject'] = t('Your recent Purchase at RsCheapGold', [], $options);
-        $message['body'][] = Html::escape($params['message']);
-        break;
   }
 }
-
-function lottery_mail_alter(&$message) {
-  $headers = array(
-    'MIME-Version'              => '1.0',
-    'Content-Type'              => 'text/html; charset=iso-8859-1; format=flowed',
-    'Content-Transfer-Encoding' => '8Bit',
-    'X-Mailer'                  => 'Drupal',
-  );
-  foreach ($headers as $key => $value) {
-    $message['headers'][$key] = $value;
-  }
-}
-
 
 function lottery_theme($existing, $type, $theme, $path) {
   return [
