@@ -1,13 +1,26 @@
 # Order List menu items definition
 entity.default_entity.collection:
-  title: 'Order List'
+  title: 'Orders management'
   route_name: entity.default_entity.collection
   description: 'List Order List entities'
   parent: system.admin_structure
   weight: 100
 
 default_entity.admin.structure.settings:
-  title: Order List settings
+  title: Orders management settings
   description: 'Configure Order List entities'
   route_name: default_entity.settings
+  parent: system.admin_structure
+# Lottery management menu items definition
+entity.lottery_manager.collection:
+  title: 'Lottery management'
+  route_name: entity.lottery_manager.collection
+  description: 'List Lottery management entities'
+  parent: system.admin_structure
+  weight: 100
+
+lottery_manager.admin.structure.settings:
+  title: Lottery management settings
+  description: 'Configure Lottery management entities'
+  route_name: lottery_manager.settings
   parent: system.admin_structure

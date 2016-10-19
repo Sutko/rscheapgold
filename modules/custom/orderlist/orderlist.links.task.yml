@@ -19,3 +19,24 @@ entity.default_entity.delete_form:
   title: Delete
   weight: 10
 
+# Lottery management routing definition
+lottery_manager.settings_tab:
+  route_name: lottery_manager.settings
+  title: 'Settings'
+  base_route: lottery_manager.settings
+entity.lottery_manager.canonical:
+  route_name: entity.lottery_manager.canonical
+  base_route: entity.lottery_manager.canonical
+  title: 'View'
+
+entity.lottery_manager.edit_form:
+  route_name: entity.lottery_manager.edit_form
+  base_route: entity.lottery_manager.canonical
+  title: Edit
+
+entity.lottery_manager.delete_form:
+  route_name:  entity.lottery_manager.delete_form
+  base_route:  entity.lottery_manager.canonical
+  title: Delete
+  weight: 10
+

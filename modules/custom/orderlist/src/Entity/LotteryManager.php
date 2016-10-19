@@ -10,34 +10,34 @@ use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\user\UserInterface;
 
 /**
- * Defines the Order List entity.
+ * Defines the Lottery management entity.
  *
  * @ingroup orderlist
  *
  * @ContentEntityType(
- *   id = "default_entity",
- *   label = @Translation("Order List"),
+ *   id = "lottery_manager",
+ *   label = @Translation("Lottery management"),
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
- *     "list_builder" = "Drupal\orderlist\DefaultEntityListBuilder",
- *     "views_data" = "Drupal\orderlist\Entity\DefaultEntityViewsData",
- *     "translation" = "Drupal\orderlist\DefaultEntityTranslationHandler",
+ *     "list_builder" = "Drupal\orderlist\LotteryManagerListBuilder",
+ *     "views_data" = "Drupal\orderlist\Entity\LotteryManagerViewsData",
+ *     "translation" = "Drupal\orderlist\LotteryManagerTranslationHandler",
  *
  *     "form" = {
- *       "default" = "Drupal\orderlist\Form\DefaultEntityForm",
- *       "add" = "Drupal\orderlist\Form\DefaultEntityForm",
- *       "edit" = "Drupal\orderlist\Form\DefaultEntityForm",
- *       "delete" = "Drupal\orderlist\Form\DefaultEntityDeleteForm",
+ *       "default" = "Drupal\orderlist\Form\LotteryManagerForm",
+ *       "add" = "Drupal\orderlist\Form\LotteryManagerForm",
+ *       "edit" = "Drupal\orderlist\Form\LotteryManagerForm",
+ *       "delete" = "Drupal\orderlist\Form\LotteryManagerDeleteForm",
  *     },
- *     "access" = "Drupal\orderlist\DefaultEntityAccessControlHandler",
+ *     "access" = "Drupal\orderlist\LotteryManagerAccessControlHandler",
  *     "route_provider" = {
- *       "html" = "Drupal\orderlist\DefaultEntityHtmlRouteProvider",
+ *       "html" = "Drupal\orderlist\LotteryManagerHtmlRouteProvider",
  *     },
  *   },
- *   base_table = "default_entity",
- *   data_table = "default_entity_field_data",
+ *   base_table = "lottery_manager",
+ *   data_table = "lottery_manager_field_data",
  *   translatable = TRUE,
-  *   admin_permission = "administer order list entities",
+  *   admin_permission = "administer lottery management entities",
  *   entity_keys = {
  *     "id" = "id",
  *     "label" = "name",
@@ -47,16 +47,16 @@ use Drupal\user\UserInterface;
  *     "status" = "status",
  *   },
  *   links = {
- *     "canonical" = "/admin/structure/default_entity/{default_entity}",
- *     "add-form" = "/admin/structure/default_entity/add",
- *     "edit-form" = "/admin/structure/default_entity/{default_entity}/edit",
- *     "delete-form" = "/admin/structure/default_entity/{default_entity}/delete",
- *     "collection" = "/admin/structure/default_entity",
+ *     "canonical" = "/admin/structure/lottery_manager/{lottery_manager}",
+ *     "add-form" = "/admin/structure/lottery_manager/add",
+ *     "edit-form" = "/admin/structure/lottery_manager/{lottery_manager}/edit",
+ *     "delete-form" = "/admin/structure/lottery_manager/{lottery_manager}/delete",
+ *     "collection" = "/admin/structure/lottery_manager",
  *   },
- *   field_ui_base_route = "default_entity.settings"
+ *   field_ui_base_route = "lottery_manager.settings"
  * )
  */
-class DefaultEntity extends ContentEntityBase implements DefaultEntityInterface {
+class LotteryManager extends ContentEntityBase implements LotteryManagerInterface {
 
   use EntityChangedTrait;
 
@@ -153,7 +153,7 @@ class DefaultEntity extends ContentEntityBase implements DefaultEntityInterface 
 
     $fields['user_id'] = BaseFieldDefinition::create('entity_reference')
       ->setLabel(t('Authored by'))
-      ->setDescription(t('The user ID of author of the Order List entity.'))
+      ->setDescription(t('The user ID of author of the Lottery management entity.'))
       ->setRevisionable(TRUE)
       ->setSetting('target_type', 'user')
       ->setSetting('handler', 'default')
@@ -178,7 +178,7 @@ class DefaultEntity extends ContentEntityBase implements DefaultEntityInterface 
 
     $fields['name'] = BaseFieldDefinition::create('string')
       ->setLabel(t('Name'))
-      ->setDescription(t('The name of the Order List entity.'))
+      ->setDescription(t('The name of the Lottery management entity.'))
       ->setSettings(array(
         'max_length' => 50,
         'text_processing' => 0,
@@ -196,9 +196,9 @@ class DefaultEntity extends ContentEntityBase implements DefaultEntityInterface 
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
-      $fields['date'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Date'))
-      ->setDescription(t('The date of the Order List entity.'))
+      $fields['lottery_key'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Lottery Key'))
+      ->setDescription(t('The key of the Lottery management entity.'))
       ->setSettings(array(
         'max_length' => 50,
         'text_processing' => 0,
@@ -216,9 +216,121 @@ class DefaultEntity extends ContentEntityBase implements DefaultEntityInterface 
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
-      $fields['order_id'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Order ID'))
-      ->setDescription(t('The order ID of the Order List entity.'))
+      $fields['package'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Package'))
+      ->setDescription(t('The package of the Lottery management entity.'))
+      ->setSettings(array(
+        'max_length' => 50,
+        'text_processing' => 0,
+      ))
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', array(
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ))
+      ->setDisplayOptions('form', array(
+        'type' => 'string_textfield',
+        'weight' => -4,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+      $fields['nicname'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Nicname'))
+      ->setDescription(t('The nicname of the Lottery management entity.'))
+      ->setSettings(array(
+        'max_length' => 50,
+        'text_processing' => 0,
+      ))
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', array(
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ))
+      ->setDisplayOptions('form', array(
+        'type' => 'string_textfield',
+        'weight' => -4,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+      $fields['name'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Name'))
+      ->setDescription(t('The name of the Lottery management entity.'))
+      ->setSettings(array(
+        'max_length' => 50,
+        'text_processing' => 0,
+      ))
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', array(
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ))
+      ->setDisplayOptions('form', array(
+        'type' => 'string_textfield',
+        'weight' => -4,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+      $fields['email'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Email'))
+      ->setDescription(t('The email of the Lottery management entity.'))
+      ->setSettings(array(
+        'max_length' => 50,
+        'text_processing' => 0,
+      ))
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', array(
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ))
+      ->setDisplayOptions('form', array(
+        'type' => 'string_textfield',
+        'weight' => -4,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+      $fields['prize'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('Prize'))
+      ->setDescription(t('The prize of the Lottery management entity.'))
+      ->setSettings(array(
+        'max_length' => 50,
+        'text_processing' => 0,
+      ))
+      ->setDefaultValue('')
+      ->setDisplayOptions('view', array(
+        'label' => 'above',
+        'type' => 'string',
+        'weight' => -4,
+      ))
+      ->setDisplayOptions('form', array(
+        'type' => 'string_textfield',
+        'weight' => -4,
+      ))
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
+      $fields['prize_id'] = BaseFieldDefinition::create('entity_reference')
+        ->setLabel(t('Prize'))
+        ->setSetting('target_type', 'prize')
+        ->setDefaultValue(0)
+        ->setDisplayOptions('view', array(
+            'label' => 'above',
+            'type' => 'taxonomy_term',
+            'weight' => -4,
+        ))
+        ->setDisplayConfigurable('view', TRUE);
+
+
+      $fields['ip_address'] = BaseFieldDefinition::create('string')
+      ->setLabel(t('IP Address'))
+      ->setDescription(t('The ip address of the Order List entity.'))
       ->setSettings(array(
         'max_length' => 50,
         'text_processing' => 0,
@@ -256,169 +368,9 @@ class DefaultEntity extends ContentEntityBase implements DefaultEntityInterface 
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
-      $fields['ip_address'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('IP Address'))
-      ->setDescription(t('The ip address of the Order List entity.'))
-      ->setSettings(array(
-        'max_length' => 50,
-        'text_processing' => 0,
-      ))
-      ->setDefaultValue('')
-      ->setDisplayOptions('view', array(
-        'label' => 'above',
-        'type' => 'string',
-        'weight' => -4,
-      ))
-      ->setDisplayOptions('form', array(
-        'type' => 'string_textfield',
-        'weight' => -4,
-      ))
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
-
-      $fields['customer'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Customer'))
-      ->setDescription(t('The customer of the Order List entity.'))
-      ->setSettings(array(
-        'max_length' => 50,
-        'text_processing' => 0,
-      ))
-      ->setDefaultValue('')
-      ->setDisplayOptions('view', array(
-        'label' => 'above',
-        'type' => 'string',
-        'weight' => -4,
-      ))
-      ->setDisplayOptions('form', array(
-        'type' => 'string_textfield',
-        'weight' => -4,
-      ))
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
-
-      $fields['amount'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Amount'))
-      ->setDescription(t('The amount of the Order List entity.'))
-      ->setSettings(array(
-        'max_length' => 50,
-        'text_processing' => 0,
-      ))
-      ->setDefaultValue('')
-      ->setDisplayOptions('view', array(
-        'label' => 'above',
-        'type' => 'string',
-        'weight' => -4,
-      ))
-      ->setDisplayOptions('form', array(
-        'type' => 'string_textfield',
-        'weight' => -4,
-      ))
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
-
-      $fields['fee'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Fee'))
-      ->setDescription(t('The fee of the Order List entity.'))
-      ->setSettings(array(
-        'max_length' => 50,
-        'text_processing' => 0,
-      ))
-      ->setDefaultValue('')
-      ->setDisplayOptions('view', array(
-        'label' => 'above',
-        'type' => 'string',
-        'weight' => -4,
-      ))
-      ->setDisplayOptions('form', array(
-        'type' => 'string_textfield',
-        'weight' => -4,
-      ))
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
-
-      $fields['character_name'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Character Name'))
-      ->setDescription(t('The character name of the Order List entity.'))
-      ->setSettings(array(
-        'max_length' => 50,
-        'text_processing' => 0,
-      ))
-      ->setDefaultValue('')
-      ->setDisplayOptions('view', array(
-        'label' => 'above',
-        'type' => 'string',
-        'weight' => -4,
-      ))
-      ->setDisplayOptions('form', array(
-        'type' => 'string_textfield',
-        'weight' => -4,
-      ))
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
-
-      $fields['character_name'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Character Name'))
-      ->setDescription(t('The character name of the Order List entity.'))
-      ->setSettings(array(
-        'max_length' => 50,
-        'text_processing' => 0,
-      ))
-      ->setDefaultValue('')
-      ->setDisplayOptions('view', array(
-        'label' => 'above',
-        'type' => 'string',
-        'weight' => -4,
-      ))
-      ->setDisplayOptions('form', array(
-        'type' => 'string_textfield',
-        'weight' => -4,
-      ))
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
-
-      $fields['payment_method'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Payment Method'))
-      ->setDescription(t('The payment method of the Order List entity.'))
-      ->setSettings(array(
-        'max_length' => 50,
-        'text_processing' => 0,
-      ))
-      ->setDefaultValue('')
-      ->setDisplayOptions('view', array(
-        'label' => 'above',
-        'type' => 'string',
-        'weight' => -4,
-      ))
-      ->setDisplayOptions('form', array(
-        'type' => 'string_textfield',
-        'weight' => -4,
-      ))
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
-
-      $fields['payment_status'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Payment Status'))
-      ->setDescription(t('The payment status of the Order List entity.'))
-      ->setSettings(array(
-        'max_length' => 50,
-        'text_processing' => 0,
-      ))
-      ->setDefaultValue('')
-      ->setDisplayOptions('view', array(
-        'label' => 'above',
-        'type' => 'string',
-        'weight' => -4,
-      ))
-      ->setDisplayOptions('form', array(
-        'type' => 'string_textfield',
-        'weight' => -4,
-      ))
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
-
       $fields['delivered'] = BaseFieldDefinition::create('list_string')
       ->setLabel(t('Delivered?'))
-      ->setDescription(t('The delivered status of the Order List entity.'))
+      ->setDescription(t('The delivered status of the Lottery management entity.'))
       ->setSettings(array(
         'max_length' => 50,
         'text_processing' => 0,
@@ -444,49 +396,9 @@ class DefaultEntity extends ContentEntityBase implements DefaultEntityInterface 
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
-      $fields['agent'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Agent'))
-      ->setDescription(t('The agent status of the Order List entity.'))
-      ->setSettings(array(
-        'max_length' => 50,
-        'text_processing' => 0,
-      ))
-      ->setDefaultValue('')
-      ->setDisplayOptions('view', array(
-        'label' => 'above',
-        'type' => 'string',
-        'weight' => -4,
-      ))
-      ->setDisplayOptions('form', array(
-        'type' => 'string_textfield',
-        'weight' => -4,
-      ))
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
-
-      $fields['profit'] = BaseFieldDefinition::create('string')
-      ->setLabel(t('Profit'))
-      ->setDescription(t('The profit status of the Order List entity.'))
-      ->setSettings(array(
-        'max_length' => 50,
-        'text_processing' => 0,
-      ))
-      ->setDefaultValue('')
-      ->setDisplayOptions('view', array(
-        'label' => 'above',
-        'type' => 'string',
-        'weight' => -4,
-      ))
-      ->setDisplayOptions('form', array(
-        'type' => 'string_textfield',
-        'weight' => -4,
-      ))
-      ->setDisplayConfigurable('form', TRUE)
-      ->setDisplayConfigurable('view', TRUE);
-
     $fields['status'] = BaseFieldDefinition::create('boolean')
       ->setLabel(t('Publishing status'))
-      ->setDescription(t('A boolean indicating whether the Order List is published.'))
+      ->setDescription(t('A boolean indicating whether the Lottery management is published.'))
       ->setDefaultValue(TRUE);
 
     $fields['created'] = BaseFieldDefinition::create('created')

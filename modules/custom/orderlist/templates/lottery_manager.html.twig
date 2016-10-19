@@ -1,0 +1,22 @@
+{#
+/**
+ * @file lottery_manager.html.twig
+ * Default theme implementation to present Lottery management data.
+ *
+ * This template is used when viewing Lottery management pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_lottery_manager()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('lottery_manager') }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>

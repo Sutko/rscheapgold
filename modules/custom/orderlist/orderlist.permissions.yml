@@ -20,3 +20,25 @@ view published order list entities:
 
 view unpublished order list entities:
   title: 'View unpublished Order List entities'
+add lottery management entities:
+  title: 'Create new Lottery management entities'
+
+administer lottery management entities:
+  title: 'Administer Lottery management entities'
+  description: 'Allow to access the administration form to configure Lottery management entities.'
+  restrict access: true
+
+delete lottery management entities:
+  title: 'Delete Lottery management entities'
+
+edit lottery management entities:
+  title: 'Edit Lottery management entities'
+
+access lottery management overview:
+  title: 'Access the Lottery management overview page'
+
+view published lottery management entities:
+  title: 'View published Lottery management entities'
+
+view unpublished lottery management entities:
+  title: 'View unpublished Lottery management entities'

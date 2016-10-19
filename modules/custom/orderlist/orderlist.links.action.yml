@@ -1,5 +1,10 @@
 entity.default_entity.add_form:
   route_name: entity.default_entity.add_form
-  title: 'Add Order List'
+  title: 'Add Order'
   appears_on:
     - entity.default_entity.collection
+entity.lottery_manager.add_form:
+  route_name: entity.lottery_manager.add_form
+  title: 'Add Lottery management'
+  appears_on:
+    - entity.lottery_manager.collection

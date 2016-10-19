@@ -4,36 +4,11 @@ entity.prize.collection:
   route_name: entity.prize.collection
   description: 'List Prize entities'
   parent: system.admin_structure
-  
+  weight: 100
 
 prize.admin.structure.settings:
   title: Prize settings
   description: 'Configure Prize entities'
   route_name: prize.settings
   parent: system.admin_structure
-# Users email menu items definition
-entity.users_email.collection:
-  title: 'Users email list'
-  route_name: entity.users_email.collection
-  description: 'List Users email entities'
-  parent: system.admin_structure
-  
 
-users_email.admin.structure.settings:
-  title: Users email settings
-  description: 'Configure Users email entities'
-  route_name: users_email.settings
-  parent: system.admin_structure
-# Prize keys menu items definition
-entity.prize_keys.collection:
-  title: 'Prize keys list'
-  route_name: entity.prize_keys.collection
-  description: 'List Prize keys entities'
-  parent: system.admin_structure
-  
-
-prize_keys.admin.structure.settings:
-  title: Prize keys settings
-  description: 'Configure Prize keys entities'
-  route_name: prize_keys.settings
-  parent: system.admin_structure
